@@ -2,7 +2,7 @@ package = "cunn"
 version = "scm-1"
 
 source = {
-   url = "git://github.com/torch/cunn.git",
+   url = "git://github.com/flybass/cunn.git",
 }
 
 description = {
@@ -22,7 +22,7 @@ dependencies = {
 build = {
    type = "command",
    build_command = [[
-cmake -E make_directory build && cd build && cmake .. -DLUALIB=$(LUALIB) -DCMAKE_BUILD_TYPE=Release -DCMAKE_PREFIX_PATH="$(LUA_BINDIR)/.." -DCMAKE_INSTALL_PREFIX="$(PREFIX)" && $(MAKE) -j$(getconf _NPROCESSORS_ONLN) install
+cmake -E make_directory build && cd build && cmake .. -DCMAKE_CXX_FLAGS="-stdlib=libstdc++" -DLUALIB=$(LUALIB) -DCMAKE_BUILD_TYPE=Release -DCMAKE_PREFIX_PATH="$(LUA_BINDIR)/.." -DCMAKE_INSTALL_PREFIX="$(PREFIX)" && $(MAKE) -j$(getconf _NPROCESSORS_ONLN) install
 ]],
 	platforms = {
       windows = {
